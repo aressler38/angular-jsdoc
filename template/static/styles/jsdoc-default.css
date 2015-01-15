@@ -38,6 +38,22 @@ header
     padding: 6px 4px;
 }
 
+.private-member {
+  margin-left: 15px;
+  font-weight: normal;
+  color: #25a;
+  font-size: 0.875em;
+  text-transform: lowercase;
+  opacity: 0.8;
+}
+
+.private-member::before {
+  content: "(";
+}
+.private-member::after {
+  content: ")";
+}
+
 .class-description {
     font-style: italic;
     font-family: Palatino, 'Palatino Linotype', serif;

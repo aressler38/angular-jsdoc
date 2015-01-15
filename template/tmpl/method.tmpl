@@ -5,9 +5,14 @@ var self = this;
 <dt>
     <?js 
       var h4Title = data.attribs + name + (kind !== 'event' ? data.signature : '') ;
+      if ( data.access === 'private' ) {
+        h4Title += '<span class="private-member">private</span>';
+      }
       h4Title = '<h4 class="name" id="' + id + '">' + h4Title + '</h4>';
     ?>
     <?js if (data.ngdoc == 'directive') { /* no action for directive */ ?>
+
+
     <?js } else if (data.meta && self.outputSourceFiles) {?>
       <?js= self.linkto(meta.shortpath, h4Title, 'name-link', 'line' + meta.lineno) ?>
     <?js } else { ?>
