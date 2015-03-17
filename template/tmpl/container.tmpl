@@ -1,6 +1,13 @@
 <?js
     var self = this;
+    var ids = [];
     docs.forEach(function(doc, i) {
+    if ( doc.id !== undefined && ids.indexOf(doc.id) !== -1 ) {
+      console.log('already documented: '+doc.id);
+      return;
+    } else {
+      ids.push(doc.id);
+    }
 ?>
 
 <?js if (doc.kind === 'mainpage' || (doc.kind === 'package')) { ?>
