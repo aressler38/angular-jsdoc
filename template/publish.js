@@ -99,7 +99,29 @@ function updateItemName(item) {
 }
 
 function addParamAttributes(params) {
-    return params.map(updateItemName);
+  var names = []
+  var itemNames = [];
+
+  // Allow object property documentation, but don't add object properties to the function signature 
+  for ( var i=0; i<params.length; ++i ) {
+    var name = params[i].name;
+    if ( typeof name === 'string' ) {
+      var idxofdot = name.indexOf('.');
+      if ( idxofdot !== -1 ) { // if there's a '.' in the param string (could be object property)
+        if ( names.indexOf( name.substr(0, idxofdot) ) === -1 ) {
+          console.log('omitting object property: '+name);
+        } else {
+          names.push(params[i]);
+          itemNames.push(updateItemName(params[i]));
+        }
+      } else {
+        names.push(params[i]);
+        itemNames.push(updateItemName(params[i]));
+      }
+    }
+  }
+
+  return itemNames;
 }
 
 function buildItemTypeStrings(item) {
@@ -136,7 +158,6 @@ function addNonParamAttributes(items) {
 
 function addSignatureParams(f) {
     var params = f.params ? addParamAttributes(f.params) : [];
-
     f.signature = util.format( '%s(%s)', (f.signature || ''), params.join(', ') );
 }
 
