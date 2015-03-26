@@ -84,14 +84,16 @@ section
 
 nav
 {
+    position: absolute;
     display: block;
-    top: 28px;
     border-left: 1px solid #ccc;
-    height: 100%;
-    overflow-y: auto;
-    position: fixed;
-    right: 0px;
+    height: auto;
+    overflow-y: scroll;
+    top: 28px;
+    right: 10px;
+    width: 200px;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 nav ul {
