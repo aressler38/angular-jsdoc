@@ -67,8 +67,10 @@ section
 {
     display: block;
     background-color: #fff;
-    margin: 12px 24px;
+    padding: 12px 24px;
     border-bottom: 1px solid #ccc;
+    width: calc(100% - 200px); /* nav is 200px wide */
+    box-sizing: border-box;
 }
 
 .variation {
